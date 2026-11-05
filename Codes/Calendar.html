@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncAthletics | Unified Calendar & Schedule Scanner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .modal-backdrop { background-color: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-[#1E201E] antialiased min-h-screen flex flex-col">
+
+  <!-- TOP NAVIGATION BAR (Identical to Home Page) -->
+  <nav class="bg-white border-b border-[#E5E3DC] sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="home.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-[#1D3528] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+          S
+        </div>
+        <span class="font-bold text-2xl tracking-tight text-[#1E201E]">SyncAthletics</span>
+      </a>
+      
+      <!-- Nav Links -->
+      <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
+        <a href="home.html" class="hover:text-[#1D3528] transition-colors py-1">Home</a>
+        <a href="#" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1">Calendar</a>
+        <a href="home.html#features" class="hover:text-[#1D3528] transition-colors py-1">Features</a>
+        <a href="home.html#integrations" class="hover:text-[#1D3528] transition-colors py-1">Integrations</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2 transition-colors">Sign In</a>
+        <a href="#" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">Start Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CALENDAR WORKSPACE -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-8">
+    
+    <!-- Header Controls & Photo Scanner Launch -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <h1 class="text-3xl font-extrabold text-[#1E201E] tracking-tight">Schedule Calendar</h1>
+        <p class="text-sm text-[#6E7271] mt-1">Consolidated view of team practice, MyU lectures, Canvas deadlines, and personal events.</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Photo / Camera Scan Button -->
+        <button onclick="openScanModal()" class="flex items-center gap-2 bg-[#C85A32] hover:bg-[#b04d2a] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+          Scan Schedule / Take Photo
+        </button>
+
+        <!-- Add Event Button -->
+        <button onclick="openAddModal()" class="flex items-center gap-2 bg-[#1D3528] hover:bg-[#15271d] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Add Event
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Checkboxes -->
+    <div class="bg-white p-4 rounded-xl border border-[#E5E3DC] shadow-sm mb-6 flex flex-wrap items-center justify-between gap-4 text-xs">
+      <div class="flex items-center gap-2 font-bold text-[#1E201E]">
+        <svg class="w-4 h-4 text-[#6E7271]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.447.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+        Filter Categories:
+      </div>
+      <div class="flex flex-wrap items-center gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" checked onchange="toggleCategory('athletics')" class="accent-[#1D3528] rounded">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#1D3528]"></span>
+          <span class="font-medium">Athletics</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" checked onchange="toggleCategory('academic')" class="accent-[#2B4C7E] rounded">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#2B4C7E]"></span>
+          <span class="font-medium">MyU Classes</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" checked onchange="toggleCategory('canvas')" class="accent-[#C85A32] rounded">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#C85A32]"></span>
+          <span class="font-medium">Canvas Homework</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" checked onchange="toggleCategory('personal')" class="accent-[#7E52A0] rounded">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#7E52A0]"></span>
+          <span class="font-medium">Work & Personal</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Calendar Card Container -->
+    <div class="bg-white border border-[#E5E3DC] rounded-2xl shadow-lg overflow-hidden">
+      <!-- Navigation Toolbar -->
+      <div class="p-6 border-b border-[#E5E3DC] flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <h2 id="calendar-title" class="text-xl font-extrabold text-[#1E201E]">November 2026</h2>
+          <div class="flex border border-[#E5E3DC] rounded-lg overflow-hidden">
+            <button onclick="prevMonth()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-r border-[#E5E3DC]">&larr; Prev</button>
+            <button onclick="todayMonth()" class="px-3 py-1.5 bg-white hover:bg-gray-50 text-xs font-bold text-[#1D3528]">Today</button>
+            <button onclick="nextMonth()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-l border-[#E5E3DC]">Next &rarr;</button>
+          </div>
+        </div>
+
+        <!-- View Switcher -->
+        <div class="flex border border-[#E5E3DC] rounded-xl overflow-hidden p-1 bg-[#FAF9F6]">
+          <button id="view-month-btn" onclick="switchView('month')" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]">Month</button>
+          <button id="view-week-btn" onclick="switchView('week')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Week</button>
+          <button id="view-day-btn" onclick="switchView('day')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Day</button>
+        </div>
+      </div>
+
+      <!-- Month Grid View -->
+      <div id="month-view-grid">
+        <div class="grid grid-cols-7 bg-[#F5F4F0] border-b border-[#E5E3DC] text-center text-xs font-extrabold text-[#6E7271] py-3">
+          <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+        </div>
+        <div id="calendar-days-container" class="grid grid-cols-7 text-xs auto-rows-fr divide-x divide-y divide-[#E5E3DC]">
+          <!-- Calendar cells rendered by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- CAMERA / PHOTO SCHEDULE SCANNER MODAL -->
+  <div id="scan-modal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E5E3DC]">
+      <div class="flex items-center justify-between pb-4 border-b border-[#E5E3DC]">
+        <h3 class="text-base font-bold text-[#1E201E] flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#C85A32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+          Scan Photo Schedule
+        </h3>
+        <button onclick="closeScanModal()" class="text-[#6E7271] hover:text-[#1E201E] font-bold text-lg">&times;</button>
+      </div>
+
+      <div class="py-4 space-y-4">
+        <p class="text-xs text-[#6E7271]">Take a picture of a syllabus, whiteboard schedule, or printed practice sheet to add events to your calendar.</p>
+        
+        <!-- Live Camera Viewfinder -->
+        <div id="camera-box" class="w-full h-48 bg-[#FAF9F6] border-2 border-dashed border-[#E5E3DC] rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
+          <video id="webcam-stream" class="absolute inset-0 w-full h-full object-cover hidden" autoplay playsinline></video>
+          <div id="camera-placeholder" class="text-center p-4">
+            <svg class="w-8 h-8 text-[#6E7271] mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <button onclick="startCamera()" class="px-3 py-1.5 bg-[#1D3528] text-white rounded-lg text-xs font-bold">Start WebCam</button>
+            <p class="text-[10px] text-[#6E7271] mt-2">or drag and drop an image file</p>
+          </div>
+        </div>
+
+        <input type="file" id="file-input" accept="image/*" class="w-full text-xs text-[#6E7271] file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#E6ECE8] file:text-[#1D3528] hover:file:bg-[#d5e0d8]">
+        
+        <div id="ocr-loader" class="hidden p-3 bg-emerald-50 text-[#1D3528] rounded-xl text-xs font-medium flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#1D3528] animate-ping"></span>
+          AI Scanner analyzing schedule text... Adding events...
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-[#E5E3DC] flex justify-end gap-2">
+        <button onclick="closeScanModal()" class="px-4 py-2 bg-gray-100 text-[#1E201E] font-bold text-xs rounded-xl">Cancel</button>
+        <button onclick="processSchedulePhoto()" class="px-4 py-2 bg-[#C85A32] text-white font-bold text-xs rounded-xl shadow-sm">Extract & Save Events</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD MANUAL EVENT MODAL -->
+  <div id="add-modal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#E5E3DC]">
+      <div class="flex items-center justify-between pb-4 border-b border-[#E5E3DC]">
+        <h3 class="text-base font-bold text-[#1E201E]">Add New Schedule Event</h3>
+        <button onclick="closeAddModal()" class="text-[#6E7271] hover:text-[#1E201E] font-bold text-lg">&times;</button>
+      </div>
+
+      <form onsubmit="saveEvent(event)" class="py-4 space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-[#1E201E] mb-1">Event Title</label>
+          <input type="text" id="ev-title" required placeholder="e.g. Weightroom Lift / Anatomy Lecture" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none focus:border-[#1D3528]">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-[#1E201E] mb-1">Date</label>
+            <input type="date" id="ev-date" required value="2026-11-04" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none focus:border-[#1D3528]">
+          </div>
+          <div>
+            <label class="block font-bold text-[#1E201E] mb-1">Category</label>
+            <select id="ev-category" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none focus:border-[#1D3528]">
+              <option value="athletics">Athletics</option>
+              <option value="academic">MyU Class</option>
+              <option value="canvas">Canvas Homework</option>
+              <option value="personal">Work / Personal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-[#1E201E] mb-1">Start Time</label>
+            <input type="time" id="ev-start" value="14:00" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none">
+          </div>
+          <div>
+            <label class="block font-bold text-[#1E201E] mb-1">End Time</label>
+            <input type="time" id="ev-end" value="15:30" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-[#1E201E] mb-1">Location</label>
+          <input type="text" id="ev-location" placeholder="e.g. Fieldhouse / Hall 102" class="w-full px-3 py-2 border border-[#E5E3DC] rounded-xl focus:outline-none">
+        </div>
+
+        <div class="pt-4 border-t border-[#E5E3DC] flex justify-end gap-2">
+          <button type="button" onclick="closeAddModal()" class="px-4 py-2 bg-gray-100 text-[#1E201E] font-bold rounded-xl">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-[#1D3528] text-white font-bold rounded-xl shadow-sm">Save to Calendar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT APP LOGIC -->
+  <script>
+    let currentYear = 2026;
+    let currentMonth = 10; // November (0-indexed)
+    let activeCategories = { athletics: true, academic: true, canvas: true, personal: true };
+
+    let events = [
+      { id: 1, title: 'Morning Lift & Core', date: '2026-11-02', time: '06:30 AM', category: 'athletics', location: 'Varsity Gym' },
+      { id: 2, title: 'KIN 3101 Anatomy', date: '2026-11-03', time: '10:00 AM', category: 'academic', location: 'Hall 204' },
+      { id: 3, title: 'Team Practice', date: '2026-11-04', time: '03:30 PM', category: 'athletics', location: 'Main Turf' },
+      { id: 4, title: 'Biomechanics Quiz', date: '2026-11-04', time: '11:59 PM', category: 'canvas', location: 'Canvas LMS' },
+      { id: 5, title: 'Lab Section', date: '2026-11-05', time: '01:00 PM', category: 'academic', location: 'Science Bldg 12' },
+      { id: 6, title: 'Travel Day to Away Game', date: '2026-11-06', time: '08:00 AM', category: 'athletics', location: 'Team Bus' },
+      { id: 7, title: 'SEASON AWAY GAME', date: '2026-11-07', time: '02:00 PM', category: 'athletics', location: 'Stadium' }
+    ];
+
+    function renderCalendar() {
+      const container = document.getElementById('calendar-days-container');
+      container.innerHTML = '';
+
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // Month Label
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('calendar-title').innerText = `${monthNames[currentMonth]} ${currentYear}`;
+
+      // Empty padding days
+      for (let i = 0; i < firstDay; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'p-2 min-h-[110px] bg-gray-50/50 text-gray-300';
+        container.appendChild(cell);
+      }
+
+      // Render days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const isToday = day === 4 && currentMonth === 10 && currentYear === 2026;
+
+        const cell = document.createElement('div');
+        cell.className = `p-2 min-h-[110px] bg-white transition-colors hover:bg-[#FAF9F6] ${isToday ? 'bg-[#FAF9F6]' : ''}`;
+        
+        let cellHTML = `
+          <div class="flex items-center justify-between mb-1">
+            <span class="${isToday ? 'w-6 h-6 bg-[#1D3528] text-white rounded-full flex items-center justify-center font-bold' : 'font-bold text-[#1E201E]'}">${day}</span>
+          </div>
+          <div class="space-y-1">
+        `;
+
+        // Render matching events
+        const dayEvents = events.filter(e => e.date === dateStr && activeCategories[e.category]);
+        dayEvents.forEach(ev => {
+          let badgeClass = 'bg-[#1D3528] text-white';
+          if (ev.category === 'academic') badgeClass = 'bg-[#2B4C7E] text-white';
+          if (ev.category === 'canvas') badgeClass = 'bg-[#C85A32] text-white';
+          if (ev.category === 'personal') badgeClass = 'bg-[#7E52A0] text-white';
+
+          cellHTML += `
+            <div onclick="removeEvent(${ev.id})" class="p-1 rounded text-[10px] font-semibold cursor-pointer truncate shadow-sm ${badgeClass}" title="Click to delete">
+              ${ev.time ? ev.time + ' ' : ''}${ev.title}
+            </div>
+          `;
+        });
+
+        cellHTML += `</div>`;
+        cell.innerHTML = cellHTML;
+        container.appendChild(cell);
+      }
+    }
+
+    // Modal Control Functions
+    function openScanModal() { document.getElementById('scan-modal').classList.remove('hidden'); }
+    function closeScanModal() { document.getElementById('scan-modal').classList.add('hidden'); }
+    function openAddModal() { document.getElementById('add-modal').classList.remove('hidden'); }
+    function closeAddModal() { document.getElementById('add-modal').classList.add('hidden'); }
+
+    // Start WebCam
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('webcam-stream');
+        video.srcObject = stream;
+        video.classList.remove('hidden');
+        document.getElementById('camera-placeholder').classList.add('hidden');
+      } catch (err) {
+        alert("Camera access unavailable. Please select an image file directly.");
+      }
+    }
+
+    // Process Schedule Photo AI
+    function processSchedulePhoto() {
+      const loader = document.getElementById('ocr-loader');
+      loader.classList.remove('hidden');
+      
+      setTimeout(() => {
+        events.push(
+          { id: Date.now(), title: 'Scanned: Weightroom Conditioning', date: '2026-11-10', time: '07:00 AM', category: 'athletics', location: 'Fieldhouse' },
+          { id: Date.now() + 1, title: 'Scanned: Midterm Exam Review', date: '2026-11-12', time: '02:00 PM', category: 'academic', location: 'Hall 101' }
+        );
+        loader.classList.add('hidden');
+        closeScanModal();
+        renderCalendar();
+      }, 1500);
+    }
+
+    // Manual Event Saving
+    function saveEvent(e) {
+      e.preventDefault();
+      const title = document.getElementById('ev-title').value;
+      const date = document.getElementById('ev-date').value;
+      const category = document.getElementById('ev-category').value;
+      const start = document.getElementById('ev-start').value;
+      const location = document.getElementById('ev-location').value;
+
+      events.push({
+        id: Date.now(),
+        title,
+        date,
+        time: start,
+        category,
+        location
+      });
+
+      closeAddModal();
+      renderCalendar();
+    }
+
+    function removeEvent(id) {
+      if (confirm("Remove this event from calendar?")) {
+        events = events.filter(e => e.id !== id);
+        renderCalendar();
+      }
+    }
+
+    function toggleCategory(cat) {
+      activeCategories[cat] = !activeCategories[cat];
+      renderCalendar();
+    }
+
+    function prevMonth() { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } renderCalendar(); }
+    function nextMonth() { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } renderCalendar(); }
+    function todayMonth() { currentMonth = 10; currentYear = 2026; renderCalendar(); }
+
+    function switchView(view) {
+      document.getElementById('view-month-btn').className = view === 'month' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
+      document.getElementById('view-week-btn').className = view === 'week' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
+      document.getElementById('view-day-btn').className = view === 'day' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
+    }
+
+    // Initialize Calendar on load
+    renderCalendar();
+  </script>
+
+</body>
+</html>

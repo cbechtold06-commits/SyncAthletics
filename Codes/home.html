@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncAthletics | Unified Time Management for Student-Athletes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-[#1E201E] antialiased">
+
+  <!-- Navigation -->
+  <nav class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-[#1D3528] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+        S
+      </div>
+      <span class="font-bold text-2xl tracking-tight text-[#1E201E]">SyncAthletics</span>
+    </div>
+    
+    <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
+      <a href="#dashboard" class="text-[#1D3528] font-semibold border-b-2 border-[#1D3528] pb-1">Home
+      </a>
+      <a href="Calendar.html" class="hover:text-[#1D3528] transition-colors">Calendar</a>
+      <a href="#features" class="hover:text-[#1D3528] transition-colors">Features</a>
+      <a href="#integrations" class="hover:text-[#1D3528] transition-colors">Integrations</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="#" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2 transition-colors">Sign In</a>
+      <a href="#" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#E6ECE8] text-[#1D3528] text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#1D3528] animate-pulse"></span>
+      SyncAthletics Platform: Seamlessly Sync Canvas, MyU & Google Calendar
+    </div>
+    
+   <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E201E] tracking-tight max-w-4xl mx-auto leading-[1.15]">
+  Balance athletics, academics, and personal life in one schedule.
+</h1>
+    
+    <p class="mt-5 text-base sm:text-lg text-[#4A4E4D] max-w-2xl mx-auto font-normal leading-relaxed">
+      SyncAthletics merges varsity training schedules, university course deadlines, and social events into a single unified timeline.
+    </p>
+
+    <!-- Interactive Home & Calendar Workspace Mockup -->
+    <div id="dashboard" class="mt-12 max-w-6xl mx-auto bg-white border border-[#E5E3DC] rounded-2xl shadow-xl overflow-hidden text-left">
+      
+      <!-- Top Workspace Nav / Tab Bar -->
+      <div class="bg-[#F5F4F0] px-6 py-3 border-b border-[#E5E3DC] flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <!-- Tab Switches -->
+          <button id="tab-home-btn" onclick="switchTab('home')" class="px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all">
+            🏠 Home Tab
+          </button>
+          <button id="tab-cal-btn" onclick="switchTab('calendar')" class="px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all">
+            📅 Calendar
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 bg-[#E6ECE8] text-[#1D3528] font-bold rounded-md">Fall Season 2026</span>
+          <span class="text-[#6E7271]">Last synced 2 mins ago</span>
+        </div>
+      </div>
+
+      <!-- TAB 1: HOME TAB CONTENT -->
+      <div id="tab-home-content" class="p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Left Column: Daily Overview & Conflict Detector -->
+          <div class="space-y-4">
+            <div class="p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+              <h3 class="text-xs font-bold text-[#6E7271] uppercase tracking-wider mb-2">Today's Athletic Readiness</h3>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-extrabold text-[#1D3528]">94%</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Optimal Recovery</span>
+              </div>
+              <p class="text-xs text-[#6E7271] mt-2">Recommended study window: 2:00 PM – 4:00 PM</p>
+            </div>
+
+            <!-- Priority Homework (Canvas Sync) -->
+            <div class="p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-xs font-bold text-[#6E7271] uppercase tracking-wider">Canvas Homework</h3>
+                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">2 Due Soon</span>
+              </div>
+              <div class="space-y-2 text-xs">
+                <div class="p-2.5 bg-white border border-[#E5E3DC] rounded-lg flex items-center justify-between">
+                  <div>
+                    <div class="font-bold text-[#1E201E]">KIN 3101: Biomechanics Quiz</div>
+                    <div class="text-[10px] text-[#6E7271]">Due Today at 11:59 PM</div>
+                  </div>
+                  <span class="text-[10px] font-semibold text-[#C85A32]">High</span>
+                </div>
+                <div class="p-2.5 bg-white border border-[#E5E3DC] rounded-lg flex items-center justify-between">
+                  <div>
+                    <div class="font-bold text-[#1E201E]">BUS 2000: Case Study Analysis</div>
+                    <div class="text-[10px] text-[#6E7271]">Due Tomorrow at 5:00 PM</div>
+                  </div>
+                  <span class="text-[10px] font-semibold text-[#1D3528]">Medium</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle & Right Columns: Combined Schedule Timeline -->
+          <div class="lg:col-span-2 p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm font-bold text-[#1E201E]">Today's Consolidated Schedule</h3>
+              <div class="flex gap-2">
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#1D3528] text-white">Athletics</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#2B4C7E] text-white">Academic</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#C85A32] text-white">Social/Recovery</span>
+              </div>
+            </div>
+
+            <!-- Schedule Items -->
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-white border-l-4 border-[#1D3528] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#1D3528]">Morning Lift & Athletic Training</span>
+                  <p class="text-[11px] text-[#6E7271]">6:30 AM - 8:30 AM • Varsity Weight Room</p>
+                </div>
+                <span class="text-[10px] bg-[#E6ECE8] text-[#1D3528] font-bold px-2 py-1 rounded">Team Sync</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#2B4C7E] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#2B4C7E]">KIN 3101: Human Anatomy Lecture</span>
+                  <p class="text-[11px] text-[#6E7271]">10:00 AM - 11:30 AM • University Hall 204</p>
+                </div>
+                <span class="text-[10px] bg-blue-50 text-[#2B4C7E] font-bold px-2 py-1 rounded">MyU Sync</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#C85A32] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#C85A32]">Team Lunch & Film Review</span>
+                  <p class="text-[11px] text-[#6E7271]">12:00 PM - 1:30 PM • Student Union</p>
+                </div>
+                <span class="text-[10px] bg-orange-50 text-[#C85A32] font-bold px-2 py-1 rounded">Free Window</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#1D3528] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#1D3528]">Team Practice & Tactical Drill</span>
+                  <p class="text-[11px] text-[#6E7271]">3:30 PM - 6:00 PM • Main Field</p>
+                </div>
+                <span class="text-[10px] bg-[#E6ECE8] text-[#1D3528] font-bold px-2 py-1 rounded">Mandatory</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 2: CALENDAR CONTENT -->
+      <div id="tab-calendar-content" class="p-6 hidden">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <h3 class="text-base font-bold text-[#1E201E]">November 2026</h3>
+            <div class="flex border border-[#E5E3DC] rounded-lg overflow-hidden text-xs">
+              <button class="px-3 py-1 bg-white font-semibold">Month</button>
+              <button class="px-3 py-1 bg-[#F5F4F0] text-[#6E7271]">Week</button>
+              <button class="px-3 py-1 bg-[#F5F4F0] text-[#6E7271]">Day</button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#1D3528]"></span> Athletics</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#2B4C7E]"></span> Classes (MyU)</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#C85A32]"></span> Assignments (Canvas)</span>
+          </div>
+        </div>
+
+        <!-- Interactive Monthly Calendar Grid -->
+        <div class="border border-[#E5E3DC] rounded-xl overflow-hidden bg-white">
+          <!-- Days of Week Header -->
+          <div class="grid grid-cols-7 bg-[#F5F4F0] border-b border-[#E5E3DC] text-center text-xs font-bold text-[#6E7271] py-2">
+            <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+          </div>
+
+          <!-- Calendar Days Grid -->
+          <div class="grid grid-cols-7 text-xs auto-rows-fr divide-x divide-y divide-[#E5E3DC]">
+            <!-- Row 1 -->
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">1</div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">2</span>
+              <div class="mt-1 p-1 bg-[#E6ECE8] text-[#1D3528] rounded text-[10px] font-semibold">6:30A Lift</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">3</span>
+              <div class="mt-1 p-1 bg-blue-50 text-[#2B4C7E] rounded text-[10px] font-semibold">10:00A Lecture</div>
+            </div>
+            <div class="p-2 min-h-[80px] bg-[#FAF9F6]">
+              <span class="w-5 h-5 bg-[#1D3528] text-white rounded-full flex items-center justify-center font-bold text-[10px]">4</span>
+              <div class="mt-1 p-1 bg-[#E6ECE8] text-[#1D3528] rounded text-[10px] font-semibold">3:30P Practice</div>
+              <div class="mt-0.5 p-1 bg-orange-50 text-[#C85A32] rounded text-[10px] font-semibold">Quiz Due</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">5</span>
+              <div class="mt-1 p-1 bg-blue-50 text-[#2B4C7E] rounded text-[10px] font-semibold">1:00P Lab</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">6</span>
+              <div class="mt-1 p-1 bg-emerald-100 text-emerald-800 rounded text-[10px] font-semibold">Travel Day</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">7</span>
+              <div class="mt-1 p-1 bg-[#1D3528] text-white rounded text-[10px] font-bold"> AWAY GAME</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script for Tab Switching -->
+  <script>
+    function switchTab(tab) {
+      const homeContent = document.getElementById('tab-home-content');
+      const calContent = document.getElementById('tab-calendar-content');
+      const homeBtn = document.getElementById('tab-home-btn');
+      const calBtn = document.getElementById('tab-cal-btn');
+
+      if (tab === 'home') {
+        homeContent.classList.remove('hidden');
+        calContent.classList.add('hidden');
+        homeBtn.className = 'px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all';
+        calBtn.className = 'px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all';
+      } else {
+        homeContent.classList.add('hidden');
+        calContent.classList.remove('hidden');
+        calBtn.className = 'px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all';
+        homeBtn.className = 'px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all';
+      }
+    }
+  </script>
+
+</body>
+</html>
