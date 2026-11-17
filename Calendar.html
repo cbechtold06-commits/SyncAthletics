@@ -31,19 +31,19 @@
         <a href="home.html" class="hover:text-[#1D3528] transition-colors py-1">Home</a>
         <a href="Calendar.html" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1" aria-current="page">Calendar</a>
         <a href="features.html" class="hover:text-[#1D3528] transition-colors py-1">Pricing &amp; Features</a>
-        <a href="features.html#integrations" class="hover:text-[#1D3528] transition-colors py-1">Integrations</a>
+        <a href="whyus.html" class="hover:text-[#1D3528] transition-colors py-1">Why Us?</a>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-4">
-        <a href="#" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2 transition-colors">Sign In</a>
-        <a href="#" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">Start Free Trial</a>
+        <a href="https://accounts.google.com/" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2 transition-colors">Sign In</a>
+        <a href="Calendar.html?startTrial=1" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">Start Free Trial</a>
       </div>
     </div>
   </nav>
 
   <!-- MAIN CALENDAR WORKSPACE -->
-  <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-8">
+  <main data-subscription-app class="relative flex-grow max-w-7xl w-full mx-auto px-6 py-8">
     
     <!-- Header Controls & Photo Scanner Launch -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -54,7 +54,7 @@
 
       <div class="flex items-center gap-3">
         <!-- Photo / Camera Scan Button -->
-        <button onclick="openScanModal()" class="flex items-center gap-2 bg-[#C85A32] hover:bg-[#b04d2a] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
+        <button data-trial-addon onclick="openScanModal()" class="flex items-center gap-2 bg-[#C85A32] hover:bg-[#b04d2a] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
           Scan Schedule / Take Photo
         </button>
@@ -104,24 +104,24 @@
         <div class="flex items-center gap-4">
           <h2 id="calendar-title" class="text-xl font-extrabold text-[#1E201E]">November 2026</h2>
           <div class="flex border border-[#E5E3DC] rounded-lg overflow-hidden">
-            <button onclick="prevMonth()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-r border-[#E5E3DC]">&larr; Prev</button>
-            <button onclick="todayMonth()" class="px-3 py-1.5 bg-white hover:bg-gray-50 text-xs font-bold text-[#1D3528]">Today</button>
-            <button onclick="nextMonth()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-l border-[#E5E3DC]">Next &rarr;</button>
+            <button onclick="prevPeriod()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-r border-[#E5E3DC]">&larr; Prev</button>
+            <button onclick="todayPeriod()" class="px-3 py-1.5 bg-white hover:bg-gray-50 text-xs font-bold text-[#1D3528]">Today</button>
+            <button onclick="nextPeriod()" class="px-3 py-1.5 bg-[#FAF9F6] hover:bg-gray-100 text-xs font-bold text-[#1E201E] border-l border-[#E5E3DC]">Next &rarr;</button>
           </div>
         </div>
 
         <!-- View Switcher -->
         <div class="flex border border-[#E5E3DC] rounded-xl overflow-hidden p-1 bg-[#FAF9F6]">
-          <button id="view-month-btn" onclick="switchView('month')" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]">Month</button>
-          <button id="view-week-btn" onclick="switchView('week')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Week</button>
-          <button id="view-day-btn" onclick="switchView('day')" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Day</button>
+          <button id="view-month-btn" onclick="switchView('month')" aria-pressed="true" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]">Month</button>
+          <button id="view-week-btn" onclick="switchView('week')" aria-pressed="false" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Week</button>
+          <button id="view-day-btn" onclick="switchView('day')" aria-pressed="false" class="px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]">Day</button>
         </div>
       </div>
 
       <!-- Month Grid View -->
-      <div id="month-view-grid">
-        <div class="grid grid-cols-7 bg-[#F5F4F0] border-b border-[#E5E3DC] text-center text-xs font-extrabold text-[#6E7271] py-3">
-          <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+      <div>
+        <div id="calendar-weekdays-container" class="grid grid-cols-7 bg-[#F5F4F0] border-b border-[#E5E3DC] text-center text-xs font-extrabold text-[#6E7271] py-3">
+          <!-- Weekday headers rendered by JavaScript -->
         </div>
         <div id="calendar-days-container" class="grid grid-cols-7 text-xs auto-rows-fr divide-x divide-y divide-[#E5E3DC]">
           <!-- Calendar cells rendered by JavaScript -->
@@ -225,8 +225,8 @@
 
   <!-- JAVASCRIPT APP LOGIC -->
   <script>
-    let currentYear = 2026;
-    let currentMonth = 10; // November (0-indexed)
+    let currentDate = new Date(2026, 10, 4);
+    let currentView = 'month';
     let activeCategories = { athletics: true, academic: true, canvas: true, personal: true };
 
     let events = [
@@ -241,33 +241,83 @@
 
     function renderCalendar() {
       const container = document.getElementById('calendar-days-container');
+      const weekdayContainer = document.getElementById('calendar-weekdays-container');
       container.innerHTML = '';
+      weekdayContainer.innerHTML = '';
 
-      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-      // Month Label
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      document.getElementById('calendar-title').innerText = `${monthNames[currentMonth]} ${currentYear}`;
-
-      // Empty padding days
-      for (let i = 0; i < firstDay; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'p-2 min-h-[110px] bg-gray-50/50 text-gray-300';
-        container.appendChild(cell);
+      let dates = [];
+      if (currentView === 'month') {
+        const firstDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const firstDay = firstDate.getDay();
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        for (let i = 0; i < firstDay; i++) dates.push(null);
+        for (let day = 1; day <= daysInMonth; day++) {
+          dates.push(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
+        }
+        document.getElementById('calendar-title').textContent = currentDate.toLocaleDateString('en-US', {
+          month: 'long',
+          year: 'numeric'
+        });
+      } else if (currentView === 'week') {
+        const weekStart = new Date(currentDate);
+        weekStart.setDate(currentDate.getDate() - currentDate.getDay());
+        dates = Array.from({ length: 7 }, (_, index) => {
+          const date = new Date(weekStart);
+          date.setDate(weekStart.getDate() + index);
+          return date;
+        });
+        const weekEnd = dates[6];
+        const startLabel = dates[0].toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const endLabel = weekStart.getMonth() === weekEnd.getMonth() && weekStart.getFullYear() === weekEnd.getFullYear()
+          ? `${weekEnd.getDate()}, ${weekEnd.getFullYear()}`
+          : weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        document.getElementById('calendar-title').textContent = `${startLabel} – ${endLabel}`;
+      } else {
+        dates = [new Date(currentDate)];
+        document.getElementById('calendar-title').textContent = currentDate.toLocaleDateString('en-US', {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        });
       }
 
-      // Render days
-      for (let day = 1; day <= daysInMonth; day++) {
-        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const isToday = day === 4 && currentMonth === 10 && currentYear === 2026;
+      const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      const visibleWeekdays = currentView === 'month'
+        ? weekdayNames
+        : dates.filter(Boolean).map((date) => weekdayNames[date.getDay()]);
+      visibleWeekdays.forEach((name) => {
+        const weekday = document.createElement('div');
+        weekday.textContent = name;
+        weekdayContainer.appendChild(weekday);
+      });
 
+      const columns = currentView === 'day' ? 'grid-cols-1' : 'grid-cols-7';
+      weekdayContainer.classList.remove('grid-cols-1', 'grid-cols-7');
+      container.classList.remove('grid-cols-1', 'grid-cols-7');
+      weekdayContainer.classList.add(columns);
+      container.classList.add(columns);
+
+      dates.forEach((date) => {
         const cell = document.createElement('div');
-        cell.className = `p-2 min-h-[110px] bg-white transition-colors hover:bg-[#FAF9F6] ${isToday ? 'bg-[#FAF9F6]' : ''}`;
+        if (!date) {
+          cell.className = 'p-2 min-h-[110px] bg-gray-50/50 text-gray-300';
+          container.appendChild(cell);
+          return;
+        }
+
+        const dateStr = [
+          date.getFullYear(),
+          String(date.getMonth() + 1).padStart(2, '0'),
+          String(date.getDate()).padStart(2, '0')
+        ].join('-');
+        const isToday = dateStr === '2026-11-04';
+        const cellHeight = currentView === 'month' ? 'min-h-[110px]' : 'min-h-[320px]';
+        cell.className = `p-2 ${cellHeight} bg-white transition-colors hover:bg-[#FAF9F6] ${isToday ? 'bg-[#FAF9F6]' : ''}`;
         
         let cellHTML = `
           <div class="flex items-center justify-between mb-1">
-            <span class="${isToday ? 'w-6 h-6 bg-[#1D3528] text-white rounded-full flex items-center justify-center font-bold' : 'font-bold text-[#1E201E]'}">${day}</span>
+            <span class="${isToday ? 'w-6 h-6 bg-[#1D3528] text-white rounded-full flex items-center justify-center font-bold' : 'font-bold text-[#1E201E]'}">${date.getDate()}</span>
           </div>
           <div class="space-y-1">
         `;
@@ -290,7 +340,7 @@
         cellHTML += `</div>`;
         cell.innerHTML = cellHTML;
         container.appendChild(cell);
-      }
+      });
     }
 
     // Modal Control Functions
@@ -362,19 +412,40 @@
       renderCalendar();
     }
 
-    function prevMonth() { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } renderCalendar(); }
-    function nextMonth() { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } renderCalendar(); }
-    function todayMonth() { currentMonth = 10; currentYear = 2026; renderCalendar(); }
+    function changePeriod(direction) {
+      const date = new Date(currentDate);
+      if (currentView === 'month') {
+        date.setDate(1);
+        date.setMonth(date.getMonth() + direction);
+        date.setDate(Math.min(currentDate.getDate(), new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()));
+      } else {
+        date.setDate(date.getDate() + direction * (currentView === 'week' ? 7 : 1));
+      }
+      currentDate = date;
+      renderCalendar();
+    }
+
+    function prevPeriod() { changePeriod(-1); }
+    function nextPeriod() { changePeriod(1); }
+    function todayPeriod() { currentDate = new Date(2026, 10, 4); renderCalendar(); }
 
     function switchView(view) {
-      document.getElementById('view-month-btn').className = view === 'month' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
-      document.getElementById('view-week-btn').className = view === 'week' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
-      document.getElementById('view-day-btn').className = view === 'day' ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]' : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
+      currentView = view;
+      ['month', 'week', 'day'].forEach((viewName) => {
+        const button = document.getElementById(`view-${viewName}-btn`);
+        const active = viewName === view;
+        button.setAttribute('aria-pressed', String(active));
+        button.className = active
+          ? 'px-4 py-1.5 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC]'
+          : 'px-4 py-1.5 text-xs font-semibold rounded-lg text-[#6E7271]';
+      });
+      renderCalendar();
     }
 
     // Initialize Calendar on load
     renderCalendar();
   </script>
+  <script src="subscription.js"></script>
 
 </body>
 </html>
