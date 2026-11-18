@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncAthletics | Base+Added</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .modal-backdrop { background-color: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-[#1E201E] antialiased">
+
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-[#E5E3DC] sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="home.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-[#1D3528] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+        S
+      </div>
+      <span class="font-bold text-2xl tracking-tight text-[#1E201E]">SyncAthletics</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
+      <a href="home.html" class="hover:text-[#1D3528] transition-colors py-1">Home</a>
+      <a href="base-added.html" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1" aria-current="page">Base+Added</a>
+      <a href="Calendar.html" class="hover:text-[#1D3528] transition-colors py-1">Calendar</a>
+      <a href="features.html" class="hover:text-[#1D3528] transition-colors py-1">Pricing &amp; Features</a>
+      <a href="whyus.html" class="hover:text-[#1D3528] transition-colors py-1">Why Us?</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a href="https://accounts.google.com/" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2 transition-colors">Sign In</a>
+      <a href="Calendar.html?startTrial=1" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">Start Free Trial</a>
+    </div>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#E6ECE8] text-[#1D3528] text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#1D3528] animate-pulse"></span>
+      SyncAthletics Platform: Seamlessly Sync Canvas, MyU & Google Calendar
+    </div>
+
+   <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E201E] tracking-tight max-w-4xl mx-auto leading-[1.15]">
+  Balance athletics, academics, and personal life in one schedule.
+</h1>
+
+    <p class="mt-5 text-base sm:text-lg text-[#4A4E4D] max-w-2xl mx-auto font-normal leading-relaxed">
+      SyncAthletics merges varsity training schedules, university course deadlines, and social events into a single unified timeline.
+    </p>
+
+    <div class="mt-10 max-w-4xl mx-auto">
+      <img
+        src="images/UMD%20athletics.png"
+        alt="University of Maryland athletics"
+        class="w-full rounded-2xl border border-[#E5E3DC] shadow-lg"
+        loading="lazy"
+      >
+    </div>
+
+    <section class="mt-4 text-left" aria-labelledby="added-features-title">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-3">
+          <p class="text-[9px] font-bold uppercase tracking-widest text-[#4A4E4D]">Optional add-ons</p>
+          <h2 id="added-features-title" class="mt-1 text-lg font-extrabold text-[#1E201E]">Base+Added features</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <article class="bg-white border border-[#E5E3DC] rounded-xl p-3 shadow-sm flex flex-col">
+            <div class="w-8 h-8 rounded-lg bg-orange-50 text-[#C85A32] flex items-center justify-center text-sm mb-2">📷</div>
+            <h3 class="text-sm font-bold text-[#1E201E]">Picture Upload</h3>
+            <p class="text-[11px] text-[#4A4E4D] mt-1 leading-relaxed flex-grow">Upload a schedule or assignment photo.</p>
+            <button type="button" onclick="openPictureUpload()" class="mt-2 w-full rounded-lg bg-[#C85A32] px-3 py-1.5 text-[11px] font-bold text-white hover:bg-[#b04d2a]">
+              Scan Schedule / Take Photo
+            </button>
+            <img id="saved-picture-preview" alt="Uploaded schedule preview" class="hidden mt-2 max-h-24 w-full rounded-lg border border-[#E5E3DC] object-contain">
+            <p id="picture-saved-status" class="mt-1 text-[10px] text-[#4A4E4D]" role="status"></p>
+          </article>
+
+          <article class="bg-white border border-[#E5E3DC] rounded-xl p-3 shadow-sm flex flex-col">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 text-[#2B4C7E] flex items-center justify-center text-sm mb-2">🔔</div>
+            <h3 class="text-sm font-bold text-[#1E201E]">Downtime Alerts</h3>
+            <p class="text-[11px] text-[#4A4E4D] mt-1 leading-relaxed flex-grow">Get notified about free time between commitments.</p>
+            <div class="mt-2 rounded-lg bg-[#FAF9F6] p-2.5">
+              <button id="downtime-alert-toggle" type="button" aria-pressed="false" onclick="toggleDowntimeAlerts()" class="rounded-lg bg-[#1D3528] px-3 py-1.5 text-[11px] font-bold text-white hover:bg-[#15271d]">
+                Enable demo alerts
+              </button>
+              <p id="downtime-alert-status" class="mt-2 text-[10px] text-[#4A4E4D]" role="status">Demo only; no push notifications.</p>
+            </div>
+          </article>
+
+          <article class="bg-white border border-[#E5E3DC] rounded-xl p-3 shadow-sm flex flex-col">
+            <div class="w-8 h-8 rounded-lg bg-purple-50 text-[#7E52A0] flex items-center justify-center text-sm mb-2">🎓</div>
+            <h3 class="text-sm font-bold text-[#1E201E]">Assignment Tracker</h3>
+            <p class="text-[11px] text-[#4A4E4D] mt-1 leading-relaxed">Track assignments and mark work complete.</p>
+            <div class="mt-2 space-y-1.5 text-[11px]">
+              <label class="flex items-start gap-2 rounded-lg bg-[#FAF9F6] p-2">
+                <input type="checkbox" onchange="updateAssignmentStatus(this)" class="mt-0.5 accent-[#1D3528]">
+                <span class="flex-1">
+                  <span class="block font-semibold text-xs text-[#1E201E]">Biomechanics Quiz</span>
+                  <span class="block text-[10px] text-[#6E7271]">Due today at 11:59 PM</span>
+                  <span class="assignment-status text-[10px] text-[#1D3528]"></span>
+                </span>
+              </label>
+              <label class="flex items-start gap-2 rounded-lg bg-[#FAF9F6] p-2">
+                <input type="checkbox" onchange="updateAssignmentStatus(this)" class="mt-0.5 accent-[#1D3528]">
+                <span class="flex-1">
+                  <span class="block font-semibold text-xs text-[#1E201E]">Case Study Analysis</span>
+                  <span class="block text-[10px] text-[#6E7271]">Due tomorrow at 5:00 PM</span>
+                  <span class="assignment-status text-[10px] text-[#1D3528]"></span>
+                </span>
+              </label>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Interactive Home & Calendar Workspace Mockup -->
+    <div id="dashboard" data-subscription-app class="relative mt-12 max-w-6xl mx-auto bg-white border border-[#E5E3DC] rounded-2xl shadow-xl overflow-hidden text-left">
+
+      <!-- Top Workspace Nav / Tab Bar -->
+      <div class="bg-[#F5F4F0] px-6 py-3 border-b border-[#E5E3DC] flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <!-- Tab Switches -->
+          <button id="tab-home-btn" onclick="switchTab('home')" class="px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all">
+            🏠 Home Tab
+          </button>
+          <button id="tab-cal-btn" onclick="switchTab('calendar')" class="px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all">
+            📅 Calendar
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs">
+          <span class="px-2.5 py-1 bg-[#E6ECE8] text-[#1D3528] font-bold rounded-md">Fall Season 2026</span>
+          <span class="text-[#6E7271]">Last synced 2 mins ago</span>
+        </div>
+      </div>
+
+      <!-- TAB 1: HOME TAB CONTENT -->
+      <div id="tab-home-content" class="p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <!-- Left Column: Daily Overview & Conflict Detector -->
+          <div class="space-y-4">
+            <div class="p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+              <h3 class="text-xs font-bold text-[#6E7271] uppercase tracking-wider mb-2">Today's Athletic Readiness</h3>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-extrabold text-[#1D3528]">94%</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Optimal Recovery</span>
+              </div>
+              <p class="text-xs text-[#6E7271] mt-2">Next wellness reminder: Hydration at 12:00 PM</p>
+            </div>
+
+            <!-- Upcoming Homework (Canvas Sync) -->
+            <div class="p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="text-xs font-bold text-[#6E7271] uppercase tracking-wider">Canvas Homework</h3>
+                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">2 Due Soon</span>
+              </div>
+              <div class="space-y-2 text-xs">
+                <div class="p-2.5 bg-white border border-[#E5E3DC] rounded-lg">
+                  <div>
+                    <div class="font-bold text-[#1E201E]">KIN 3101: Biomechanics Quiz</div>
+                    <div class="text-[10px] text-[#6E7271]">Due Today at 11:59 PM</div>
+                  </div>
+                </div>
+                <div class="p-2.5 bg-white border border-[#E5E3DC] rounded-lg">
+                  <div>
+                    <div class="font-bold text-[#1E201E]">BUS 2000: Case Study Analysis</div>
+                    <div class="text-[10px] text-[#6E7271]">Due Tomorrow at 5:00 PM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle & Right Columns: Combined Schedule Timeline -->
+          <div class="lg:col-span-2 p-4 bg-[#FAF9F6] border border-[#E5E3DC] rounded-xl">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm font-bold text-[#1E201E]">Today's Consolidated Schedule</h3>
+              <div class="flex gap-2">
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#1D3528] text-white">Athletics</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#2B4C7E] text-white">Academic</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#C85A32] text-white">Social/Recovery</span>
+              </div>
+            </div>
+
+            <!-- Schedule Items -->
+            <div class="space-y-2 text-xs">
+              <div class="p-3 bg-white border-l-4 border-[#1D3528] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#1D3528]">Morning Lift & Athletic Training</span>
+                  <p class="text-[11px] text-[#6E7271]">6:30 AM - 8:30 AM • Varsity Weight Room</p>
+                </div>
+                <span class="text-[10px] bg-[#E6ECE8] text-[#1D3528] font-bold px-2 py-1 rounded">Team Sync</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#2B4C7E] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#2B4C7E]">KIN 3101: Human Anatomy Lecture</span>
+                  <p class="text-[11px] text-[#6E7271]">10:00 AM - 11:30 AM • University Hall 204</p>
+                </div>
+                <span class="text-[10px] bg-blue-50 text-[#2B4C7E] font-bold px-2 py-1 rounded">MyU Sync</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#C85A32] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#C85A32]">Team Lunch & Film Review</span>
+                  <p class="text-[11px] text-[#6E7271]">12:00 PM - 1:30 PM • Student Union</p>
+                </div>
+                <span class="text-[10px] bg-orange-50 text-[#C85A32] font-bold px-2 py-1 rounded">Free Window</span>
+              </div>
+
+              <div class="p-3 bg-white border-l-4 border-[#1D3528] rounded-r-lg shadow-sm flex items-center justify-between">
+                <div>
+                  <span class="font-bold text-[#1D3528]">Team Practice & Tactical Drill</span>
+                  <p class="text-[11px] text-[#6E7271]">3:30 PM - 6:00 PM • Main Field</p>
+                </div>
+                <span class="text-[10px] bg-[#E6ECE8] text-[#1D3528] font-bold px-2 py-1 rounded">Mandatory</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <section class="mt-6" aria-labelledby="home-base-features-title">
+          <h3 id="home-base-features-title" class="text-sm font-bold text-[#1E201E] mb-3">Included with your base plan</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">App Connections</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">Bring MyU classes, Canvas assignments, and Google Calendar events into one place.</p>
+            </article>
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">Customizable Schedule</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">Organize classes, practices, workouts, and personal commitments around your routine.</p>
+            </article>
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">Wellness Reminders</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">Get reminders for meals, hydration, and recovery around your training schedule.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <!-- TAB 2: CALENDAR CONTENT -->
+      <div id="tab-calendar-content" class="p-6 hidden">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <h3 id="home-calendar-title" class="text-base font-bold text-[#1E201E]">November 2026</h3>
+            <div class="flex border border-[#E5E3DC] rounded-lg overflow-hidden text-xs">
+              <button id="home-month-btn" onclick="setHomeCalendarView('month')" aria-pressed="true" class="px-3 py-1 bg-white font-semibold">Month</button>
+              <button id="home-week-btn" onclick="setHomeCalendarView('week')" aria-pressed="false" class="px-3 py-1 bg-[#F5F4F0] text-[#6E7271]">Week</button>
+              <button id="home-day-btn" onclick="setHomeCalendarView('day')" aria-pressed="false" class="px-3 py-1 bg-[#F5F4F0] text-[#6E7271]">Day</button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#1D3528]"></span> Athletics</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#2B4C7E]"></span> Classes (MyU)</span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#C85A32]"></span> Assignments (Canvas)</span>
+          </div>
+        </div>
+
+        <!-- Interactive Monthly Calendar Grid -->
+        <div id="home-calendar-grid" class="border border-[#E5E3DC] rounded-xl overflow-hidden bg-white">
+          <!-- Days of Week Header -->
+          <div id="home-calendar-weekdays" class="grid grid-cols-7 bg-[#F5F4F0] border-b border-[#E5E3DC] text-center text-xs font-bold text-[#6E7271] py-2">
+            <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+          </div>
+
+          <!-- Calendar Days Grid -->
+          <div id="home-calendar-days" class="grid grid-cols-7 text-xs divide-x divide-y divide-[#E5E3DC]">
+            <div class="p-2 min-h-[80px]"><span class="font-bold">1</span></div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">2</span>
+              <div class="mt-1 p-1 bg-[#E6ECE8] text-[#1D3528] rounded text-[10px] font-semibold">6:30A Lift</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">3</span>
+              <div class="mt-1 p-1 bg-blue-50 text-[#2B4C7E] rounded text-[10px] font-semibold">10:00A Lecture</div>
+            </div>
+            <div class="p-2 min-h-[80px] bg-[#FAF9F6]">
+              <span class="w-5 h-5 bg-[#1D3528] text-white rounded-full flex items-center justify-center font-bold text-[10px]">4</span>
+              <div class="mt-1 p-1 bg-[#E6ECE8] text-[#1D3528] rounded text-[10px] font-semibold">3:30P Practice</div>
+              <div class="mt-0.5 p-1 bg-orange-50 text-[#C85A32] rounded text-[10px] font-semibold">Quiz Due</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">5</span>
+              <div class="mt-1 p-1 bg-blue-50 text-[#2B4C7E] rounded text-[10px] font-semibold">1:00P Lab</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">6</span>
+              <div class="mt-1 p-1 bg-emerald-100 text-emerald-800 rounded text-[10px] font-semibold">Travel Day</div>
+            </div>
+            <div class="p-2 min-h-[80px]">
+              <span class="font-bold">7</span>
+              <div class="mt-1 p-1 bg-[#1D3528] text-white rounded text-[10px] font-bold"> AWAY GAME</div>
+            </div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">8</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">9</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">10</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">11</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">12</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">13</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">14</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">15</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">16</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">17</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">18</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">19</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">20</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">21</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">22</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">23</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">24</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">25</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">26</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">27</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">28</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">29</span></div>
+            <div class="p-2 min-h-[80px]"><span class="font-bold">30</span></div>
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">1</div>
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">2</div>
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">3</div>
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">4</div>
+            <div class="p-2 min-h-[80px] bg-gray-50/50 text-[#A3A8A5]">5</div>
+          </div>
+        </div>
+
+        <section class="mt-6" aria-labelledby="calendar-base-features-title">
+          <h3 id="calendar-base-features-title" class="text-sm font-bold text-[#1E201E] mb-3">Included with your base plan</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">App Connections</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">See MyU classes and Canvas assignments alongside your schedule and Google Calendar events.</p>
+            </article>
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">Customizable Schedule</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">Use month, week, and day views to keep classes, training, and personal events organized.</p>
+            </article>
+            <article class="p-4 bg-white border border-[#E5E3DC] rounded-xl">
+              <h4 class="text-xs font-bold text-[#1D3528]">Wellness Reminders</h4>
+              <p class="text-xs text-[#4A4E4D] mt-2 leading-relaxed">Plan meal, hydration, and recovery reminders alongside your calendar commitments.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <div id="picture-upload-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#1E201E]/50 p-4" role="dialog" aria-modal="true" aria-labelledby="picture-upload-title">
+      <div class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-[#E5E3DC] bg-white p-6 shadow-2xl">
+        <div class="flex items-center justify-between border-b border-[#E5E3DC] pb-4">
+          <h2 id="picture-upload-title" class="text-lg font-bold text-[#1E201E]">Picture Upload</h2>
+          <button type="button" onclick="closePictureUpload()" aria-label="Close picture upload" class="text-xl font-bold text-[#6E7271]">&times;</button>
+        </div>
+        <p class="py-4 text-sm text-[#4A4E4D]">Choose a schedule photo or take one with your camera. Automatic schedule extraction is not available in this demo.</p>
+        <div class="space-y-4">
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="startPictureCamera()" class="rounded-lg bg-[#1D3528] px-4 py-2 text-xs font-bold text-white">Open Camera</button>
+            <button id="capture-picture-button" type="button" onclick="capturePicture()" disabled class="rounded-lg bg-[#E6ECE8] px-4 py-2 text-xs font-bold text-[#1D3528] disabled:opacity-50">Take Photo</button>
+          </div>
+          <video id="picture-camera" class="hidden max-h-64 w-full rounded-xl bg-black object-contain" autoplay playsinline></video>
+          <input id="picture-file-input" type="file" accept="image/*" onchange="previewPicture(event)" class="w-full text-xs text-[#6E7271] file:mr-4 file:rounded-xl file:border-0 file:bg-[#E6ECE8] file:px-4 file:py-2 file:text-xs file:font-semibold file:text-[#1D3528]">
+          <img id="picture-preview" alt="Selected schedule photo preview" class="hidden max-h-64 w-full rounded-xl border border-[#E5E3DC] object-contain">
+          <p id="picture-upload-status" class="text-xs text-[#4A4E4D]" role="status" aria-live="polite"></p>
+        </div>
+        <div class="mt-5 flex justify-end gap-2 border-t border-[#E5E3DC] pt-4">
+          <button type="button" onclick="closePictureUpload()" class="rounded-xl bg-gray-100 px-4 py-2 text-xs font-bold text-[#1E201E]">Cancel</button>
+          <button id="save-picture-button" type="button" onclick="savePicture()" disabled class="rounded-xl bg-[#C85A32] px-4 py-2 text-xs font-bold text-white disabled:opacity-50">Save Picture</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script for Tab Switching -->
+  <script>
+    let selectedPictureDataUrl = '';
+    let pictureCameraStream = null;
+
+    function setHomeCalendarView(view) {
+      const weekdays = document.getElementById('home-calendar-weekdays');
+      const days = document.getElementById('home-calendar-days');
+      const dayIndex = view === 'week' ? null : view === 'day' ? 3 : null;
+
+      Array.from(weekdays.children).forEach((weekday, index) => {
+        weekday.hidden = view === 'day' && index !== dayIndex;
+      });
+      Array.from(days.children).forEach((day, index) => {
+        day.hidden = view === 'week' ? index >= 7 : view === 'day' ? index !== dayIndex : false;
+      });
+
+      const columns = view === 'day' ? 'grid-cols-1' : 'grid-cols-7';
+      weekdays.classList.remove('grid-cols-1', 'grid-cols-7');
+      days.classList.remove('grid-cols-1', 'grid-cols-7');
+      weekdays.classList.add(columns);
+      days.classList.add(columns);
+
+      const titles = {
+        month: 'November 2026',
+        week: 'November 1–7, 2026',
+        day: 'Wednesday, November 4, 2026'
+      };
+      document.getElementById('home-calendar-title').textContent = titles[view];
+
+      ['month', 'week', 'day'].forEach((viewName) => {
+        const button = document.getElementById(`home-${viewName}-btn`);
+        const active = viewName === view;
+        button.setAttribute('aria-pressed', String(active));
+        button.className = active
+          ? 'px-3 py-1 bg-white font-semibold'
+          : 'px-3 py-1 bg-[#F5F4F0] text-[#6E7271]';
+      });
+    }
+
+    function switchTab(tab) {
+      const homeContent = document.getElementById('tab-home-content');
+      const calContent = document.getElementById('tab-calendar-content');
+      const homeBtn = document.getElementById('tab-home-btn');
+      const calBtn = document.getElementById('tab-cal-btn');
+
+      if (tab === 'home') {
+        homeContent.classList.remove('hidden');
+        calContent.classList.add('hidden');
+        homeBtn.className = 'px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all';
+        calBtn.className = 'px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all';
+      } else {
+        homeContent.classList.add('hidden');
+        calContent.classList.remove('hidden');
+        calBtn.className = 'px-4 py-2 text-xs font-bold rounded-lg bg-white text-[#1D3528] shadow-sm border border-[#E5E3DC] transition-all';
+        homeBtn.className = 'px-4 py-2 text-xs font-semibold rounded-lg text-[#6E7271] hover:text-[#1E201E] hover:bg-white/60 transition-all';
+      }
+    }
+
+    function openPictureUpload() {
+      selectedPictureDataUrl = '';
+      document.getElementById('picture-file-input').value = '';
+      document.getElementById('picture-preview').removeAttribute('src');
+      document.getElementById('picture-preview').classList.add('hidden');
+      document.getElementById('save-picture-button').disabled = true;
+      document.getElementById('picture-upload-modal').classList.remove('hidden');
+      document.getElementById('picture-upload-modal').classList.add('flex');
+      document.getElementById('picture-upload-status').textContent = '';
+    }
+
+    function stopPictureCamera() {
+      if (pictureCameraStream) {
+        pictureCameraStream.getTracks().forEach((track) => track.stop());
+        pictureCameraStream = null;
+      }
+      const video = document.getElementById('picture-camera');
+      video.srcObject = null;
+      video.classList.add('hidden');
+      document.getElementById('capture-picture-button').disabled = true;
+    }
+
+    function closePictureUpload() {
+      stopPictureCamera();
+      document.getElementById('picture-upload-modal').classList.add('hidden');
+      document.getElementById('picture-upload-modal').classList.remove('flex');
+      selectedPictureDataUrl = '';
+    }
+
+    function setPicturePreview(dataUrl) {
+      selectedPictureDataUrl = dataUrl;
+      const preview = document.getElementById('picture-preview');
+      preview.src = dataUrl;
+      preview.classList.remove('hidden');
+      document.getElementById('save-picture-button').disabled = false;
+      document.getElementById('picture-upload-status').textContent = 'Photo ready to save.';
+    }
+
+    function previewPicture(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      stopPictureCamera();
+      if (!file.type.startsWith('image/')) {
+        selectedPictureDataUrl = '';
+        document.getElementById('picture-preview').classList.add('hidden');
+        document.getElementById('picture-preview').removeAttribute('src');
+        document.getElementById('save-picture-button').disabled = true;
+        document.getElementById('picture-upload-status').textContent = 'Choose an image file to continue.';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result !== 'string') {
+          document.getElementById('picture-upload-status').textContent = 'Could not preview this image. Please try another file.';
+          return;
+        }
+        setPicturePreview(reader.result);
+      };
+      reader.onerror = () => {
+        document.getElementById('picture-upload-status').textContent = 'Could not read this image. Please try another file.';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function startPictureCamera() {
+      const status = document.getElementById('picture-upload-status');
+      if (!navigator.mediaDevices?.getUserMedia) {
+        status.textContent = 'Camera access is not available here. Choose an image file instead.';
+        return;
+      }
+
+      try {
+        stopPictureCamera();
+        pictureCameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('picture-camera');
+        video.srcObject = pictureCameraStream;
+        video.classList.remove('hidden');
+        document.getElementById('capture-picture-button').disabled = false;
+        status.textContent = 'Camera is ready.';
+      } catch (error) {
+        status.textContent = 'Camera access was unavailable. Choose an image file instead.';
+      }
+    }
+
+    function capturePicture() {
+      const video = document.getElementById('picture-camera');
+      if (!video.videoWidth || !video.videoHeight) {
+        document.getElementById('picture-upload-status').textContent = 'Wait for the camera preview before taking a photo.';
+        return;
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext('2d');
+      if (!context) {
+        document.getElementById('picture-upload-status').textContent = 'Could not capture the photo. Please choose an image file instead.';
+        return;
+      }
+      context.drawImage(video, 0, 0);
+      setPicturePreview(canvas.toDataURL('image/jpeg'));
+    }
+
+    function savePicture() {
+      if (!selectedPictureDataUrl) return;
+      const preview = document.getElementById('saved-picture-preview');
+      preview.src = selectedPictureDataUrl;
+      preview.classList.remove('hidden');
+      document.getElementById('picture-saved-status').textContent = 'Picture added to this demo page.';
+      closePictureUpload();
+    }
+
+    function toggleDowntimeAlerts() {
+      const button = document.getElementById('downtime-alert-toggle');
+      const enabled = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(enabled));
+      button.textContent = enabled ? 'Disable demo alerts' : 'Enable demo alerts';
+      document.getElementById('downtime-alert-status').textContent = enabled
+        ? 'Demo alerts are on. Open time will be highlighted here; no push notifications are sent.'
+        : 'Demo alerts are off. No push notifications are sent.';
+    }
+
+    function updateAssignmentStatus(checkbox) {
+      const row = checkbox.closest('label');
+      const title = row.querySelector('.font-semibold');
+      const status = row.querySelector('.assignment-status');
+      title.classList.toggle('line-through', checkbox.checked);
+      title.classList.toggle('text-[#6E7271]', checkbox.checked);
+      status.textContent = checkbox.checked ? 'Completed' : '';
+    }
+  </script>
+  <script src="subscription.js"></script>
+
+</body>
+</html>

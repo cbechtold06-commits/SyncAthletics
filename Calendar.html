@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyncAthletics | Unified Calendar & Schedule Scanner</title>
+  <title>SyncAthletics | Unified Calendar &amp; Schedule</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
       <!-- Nav Links -->
       <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
         <a href="home.html" class="hover:text-[#1D3528] transition-colors py-1">Home</a>
+        <a href="base-added.html" class="hover:text-[#1D3528] transition-colors py-1">Base+Added</a>
         <a href="Calendar.html" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1" aria-current="page">Calendar</a>
         <a href="features.html" class="hover:text-[#1D3528] transition-colors py-1">Pricing &amp; Features</a>
         <a href="whyus.html" class="hover:text-[#1D3528] transition-colors py-1">Why Us?</a>
@@ -45,7 +46,7 @@
   <!-- MAIN CALENDAR WORKSPACE -->
   <main data-subscription-app class="relative flex-grow max-w-7xl w-full mx-auto px-6 py-8">
     
-    <!-- Header Controls & Photo Scanner Launch -->
+    <!-- Header Controls -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
       <div>
         <h1 class="text-3xl font-extrabold text-[#1E201E] tracking-tight">Schedule Calendar</h1>
@@ -53,13 +54,6 @@
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Photo / Camera Scan Button -->
-        <button data-trial-addon onclick="openScanModal()" class="flex items-center gap-2 bg-[#C85A32] hover:bg-[#b04d2a] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-          Scan Schedule / Take Photo
-        </button>
-
-        <!-- Add Event Button -->
         <button onclick="openAddModal()" class="flex items-center gap-2 bg-[#1D3528] hover:bg-[#15271d] text-white font-bold text-xs px-4 py-3 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
           Add Event
@@ -129,45 +123,6 @@
       </div>
     </div>
   </main>
-
-  <!-- CAMERA / PHOTO SCHEDULE SCANNER MODAL -->
-  <div id="scan-modal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-[#E5E3DC]">
-      <div class="flex items-center justify-between pb-4 border-b border-[#E5E3DC]">
-        <h3 class="text-base font-bold text-[#1E201E] flex items-center gap-2">
-          <svg class="w-5 h-5 text-[#C85A32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-          Scan Photo Schedule
-        </h3>
-        <button onclick="closeScanModal()" class="text-[#6E7271] hover:text-[#1E201E] font-bold text-lg">&times;</button>
-      </div>
-
-      <div class="py-4 space-y-4">
-        <p class="text-xs text-[#6E7271]">Take a picture of a syllabus, whiteboard schedule, or printed practice sheet to add events to your calendar.</p>
-        
-        <!-- Live Camera Viewfinder -->
-        <div id="camera-box" class="w-full h-48 bg-[#FAF9F6] border-2 border-dashed border-[#E5E3DC] rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
-          <video id="webcam-stream" class="absolute inset-0 w-full h-full object-cover hidden" autoplay playsinline></video>
-          <div id="camera-placeholder" class="text-center p-4">
-            <svg class="w-8 h-8 text-[#6E7271] mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            <button onclick="startCamera()" class="px-3 py-1.5 bg-[#1D3528] text-white rounded-lg text-xs font-bold">Start WebCam</button>
-            <p class="text-[10px] text-[#6E7271] mt-2">or drag and drop an image file</p>
-          </div>
-        </div>
-
-        <input type="file" id="file-input" accept="image/*" class="w-full text-xs text-[#6E7271] file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#E6ECE8] file:text-[#1D3528] hover:file:bg-[#d5e0d8]">
-        
-        <div id="ocr-loader" class="hidden p-3 bg-emerald-50 text-[#1D3528] rounded-xl text-xs font-medium flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#1D3528] animate-ping"></span>
-          AI Scanner analyzing schedule text... Adding events...
-        </div>
-      </div>
-
-      <div class="pt-4 border-t border-[#E5E3DC] flex justify-end gap-2">
-        <button onclick="closeScanModal()" class="px-4 py-2 bg-gray-100 text-[#1E201E] font-bold text-xs rounded-xl">Cancel</button>
-        <button onclick="processSchedulePhoto()" class="px-4 py-2 bg-[#C85A32] text-white font-bold text-xs rounded-xl shadow-sm">Extract & Save Events</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ADD MANUAL EVENT MODAL -->
   <div id="add-modal" class="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 hidden">
@@ -344,39 +299,8 @@
     }
 
     // Modal Control Functions
-    function openScanModal() { document.getElementById('scan-modal').classList.remove('hidden'); }
-    function closeScanModal() { document.getElementById('scan-modal').classList.add('hidden'); }
     function openAddModal() { document.getElementById('add-modal').classList.remove('hidden'); }
     function closeAddModal() { document.getElementById('add-modal').classList.add('hidden'); }
-
-    // Start WebCam
-    async function startCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        const video = document.getElementById('webcam-stream');
-        video.srcObject = stream;
-        video.classList.remove('hidden');
-        document.getElementById('camera-placeholder').classList.add('hidden');
-      } catch (err) {
-        alert("Camera access unavailable. Please select an image file directly.");
-      }
-    }
-
-    // Process Schedule Photo AI
-    function processSchedulePhoto() {
-      const loader = document.getElementById('ocr-loader');
-      loader.classList.remove('hidden');
-      
-      setTimeout(() => {
-        events.push(
-          { id: Date.now(), title: 'Scanned: Weightroom Conditioning', date: '2026-11-10', time: '07:00 AM', category: 'athletics', location: 'Fieldhouse' },
-          { id: Date.now() + 1, title: 'Scanned: Midterm Exam Review', date: '2026-11-12', time: '02:00 PM', category: 'academic', location: 'Hall 101' }
-        );
-        loader.classList.add('hidden');
-        closeScanModal();
-        renderCalendar();
-      }, 1500);
-    }
 
     // Manual Event Saving
     function saveEvent(e) {

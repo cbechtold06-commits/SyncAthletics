@@ -7,7 +7,7 @@
   if (!app) return;
 
   const gate = document.createElement('div');
-  gate.className = 'absolute inset-0 z-50 flex items-center justify-center bg-[#FAF9F6]/95 p-6';
+  gate.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-[#1E201E]/50 p-6';
   gate.setAttribute('role', 'dialog');
   gate.setAttribute('aria-modal', 'true');
   gate.setAttribute('aria-labelledby', 'subscription-gate-title');
@@ -78,14 +78,11 @@
       updateAccess();
     };
 
-    if (!gate.isConnected) app.appendChild(gate);
+    if (!gate.isConnected) document.body.appendChild(gate);
   }
 
   const query = new URLSearchParams(window.location.search);
   if (query.has('startTrial')) {
-    if (localStorage.getItem(trialKey) === null && localStorage.getItem(basePlanKey) !== 'true') {
-      localStorage.setItem(trialKey, String(Date.now()));
-    }
     window.history.replaceState(null, '', `${window.location.pathname}${window.location.hash}`);
   }
 
