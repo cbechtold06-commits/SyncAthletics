@@ -1,0 +1,32 @@
+{
+  "id": "./",
+  "name": "SyncAthletics",
+  "short_name": "Sync",
+  "description": "One schedule for athletics, academics, and everyday life.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF9F6",
+  "theme_color": "#1D3528",
+  "icons": [
+    {
+      "src": "icons/sync-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/sync-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/sync.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

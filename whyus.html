@@ -12,23 +12,33 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
   </style>
+
+  <meta name="theme-color" content="#1D3528">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SyncAthletics">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/sync-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="app.css">
+
 </head>
 <body class="bg-[#FAF9F6] text-[#1E201E] antialiased min-h-screen flex flex-col">
   <nav class="bg-white border-b border-[#E5E3DC] sticky top-0 z-30">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="home.html" class="flex items-center gap-3">
         <div class="w-10 h-10 bg-[#1D3528] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">S</div>
         <span class="font-bold text-2xl tracking-tight text-[#1E201E]">SyncAthletics</span>
       </a>
       <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
-        <a href="index.html" class="hover:text-[#1D3528] py-1">Home</a>
+        <a href="home.html" class="hover:text-[#1D3528] py-1">Home</a>
         <a href="base-added.html" class="hover:text-[#1D3528] py-1">Base+Added</a>
         <a href="features.html" class="hover:text-[#1D3528] py-1">Pricing &amp; Features</a>
         <a href="whyus.html" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1" aria-current="page">Why Us?</a>
       </div>
       <div class="flex items-center gap-4">
         <a href="https://accounts.google.com/" class="text-sm font-semibold text-[#1E201E] hover:text-[#1D3528] px-3 py-2">Sign In</a>
-        <a href="index.html?startTrial=1" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm">Start Free Trial</a>
+        <a href="home.html?startTrial=1" class="text-sm font-semibold text-white bg-[#1D3528] hover:bg-[#15271d] px-5 py-2.5 rounded-xl shadow-sm">Start Free Trial</a>
       </div>
     </div>
   </nav>
@@ -209,5 +219,19 @@
         </div>
       </section>
   </main>
+
+  <nav class="mobile-app-nav" aria-label="App navigation">
+    <a href="home.html" data-app-tab="home"><span aria-hidden="true">⌂</span><small>Home</small></a>
+    <a href="home.html?tab=calendar#dashboard" data-app-tab="calendar"><span aria-hidden="true">▦</span><small>Calendar</small></a>
+    <a href="base-added.html" data-app-tab="tools"><span aria-hidden="true">✚</span><small>Tools</small></a>
+    <a href="features.html" data-app-tab="features"><span aria-hidden="true">◈</span><small>Plans</small></a>
+  </nav>
+  <div id="install-banner" class="install-banner" hidden>
+    <div><strong>Install SyncAthletics</strong><small>Add the app to your Home Screen for quick access.</small></div>
+    <button id="install-app-button" type="button">Install</button>
+    <button id="dismiss-install" type="button" aria-label="Dismiss install prompt">×</button>
+  </div>
+  <script src="app.js" defer></script>
+
 </body>
 </html>

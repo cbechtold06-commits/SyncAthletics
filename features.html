@@ -15,6 +15,16 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
   </style>
+
+  <meta name="theme-color" content="#1D3528">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SyncAthletics">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/sync-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="app.css">
+
 </head>
 
 <body class="bg-[#FAF9F6] text-[#1E201E] antialiased min-h-screen flex flex-col">
@@ -23,7 +33,7 @@
   <nav class="bg-white border-b border-[#E5E3DC] sticky top-0 z-30">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-      <a href="index.html" class="flex items-center gap-3">
+      <a href="home.html" class="flex items-center gap-3">
         <div class="w-10 h-10 bg-[#1D3528] rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
           S
         </div>
@@ -31,7 +41,7 @@
       </a>
 
       <div class="hidden md:flex items-center gap-8 font-medium text-[#4A4E4D] text-sm">
-        <a href="index.html" class="hover:text-[#1D3528] py-1">Home</a>
+        <a href="home.html" class="hover:text-[#1D3528] py-1">Home</a>
         <a href="base-added.html" class="hover:text-[#1D3528] py-1">Base+Added</a>
         <a href="features.html" class="text-[#1D3528] font-bold border-b-2 border-[#1D3528] py-1" aria-current="page">Pricing &amp; Features</a>
         <a href="whyus.html" class="hover:text-[#1D3528] py-1">Why Us?</a>
@@ -163,7 +173,7 @@
           </div>
         </div>
 
-        <a href="index.html?startTrial=1" class="block w-full text-center bg-[#1D3528] hover:bg-[#15271d] text-white font-bold py-4 rounded-xl">
+        <a href="home.html?startTrial=1" class="block w-full text-center bg-[#1D3528] hover:bg-[#15271d] text-white font-bold py-4 rounded-xl">
           Start 7-Day Free Trial
         </a>
 
@@ -402,7 +412,7 @@
           SyncAthletics brings athletic commitments together with MyU classes, Canvas homework, and Google Calendar events in one place.
         </p>
 
-        <a href="index.html?tab=calendar#dashboard" class="inline-block mt-7 text-sm font-bold text-[#1D3528] bg-white hover:bg-[#E6ECE8] px-5 py-3 rounded-xl">
+        <a href="home.html?tab=calendar#dashboard" class="inline-block mt-7 text-sm font-bold text-[#1D3528] bg-white hover:bg-[#E6ECE8] px-5 py-3 rounded-xl">
           View your calendar
         </a>
 
@@ -415,13 +425,27 @@
   <footer class="bg-white border-t border-[#E5E3DC]">
     <div class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap justify-center gap-6 text-sm font-medium text-[#4A4E4D]">
 
-      <a href="index.html" class="hover:text-[#1D3528]">Home</a>
+      <a href="home.html" class="hover:text-[#1D3528]">Home</a>
       <a href="base-added.html" class="hover:text-[#1D3528]">Base+Added</a>
       <a href="features.html" class="text-[#1D3528] font-semibold" aria-current="page">Pricing &amp; Features</a>
       <a href="whyus.html" class="hover:text-[#1D3528]">Why Us?</a>
 
     </div>
   </footer>
+
+
+  <nav class="mobile-app-nav" aria-label="App navigation">
+    <a href="home.html" data-app-tab="home"><span aria-hidden="true">⌂</span><small>Home</small></a>
+    <a href="home.html?tab=calendar#dashboard" data-app-tab="calendar"><span aria-hidden="true">▦</span><small>Calendar</small></a>
+    <a href="base-added.html" data-app-tab="tools"><span aria-hidden="true">✚</span><small>Tools</small></a>
+    <a href="features.html" data-app-tab="features"><span aria-hidden="true">◈</span><small>Plans</small></a>
+  </nav>
+  <div id="install-banner" class="install-banner" hidden>
+    <div><strong>Install SyncAthletics</strong><small>Add the app to your Home Screen for quick access.</small></div>
+    <button id="install-app-button" type="button">Install</button>
+    <button id="dismiss-install" type="button" aria-label="Dismiss install prompt">×</button>
+  </div>
+  <script src="app.js" defer></script>
 
 </body>
 </html>

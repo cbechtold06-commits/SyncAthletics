@@ -1,0 +1,12 @@
+
+:root{--sync-green:#1D3528;--sync-cream:#FAF9F6;--sync-line:#E5E3DC}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom));-webkit-tap-highlight-color:transparent}
+button,a,input{touch-action:manipulation}
+.mobile-app-nav{position:fixed;z-index:80;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:9px 8px calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--sync-line);backdrop-filter:blur(14px);box-shadow:0 -5px 22px rgba(20,35,27,.07)}
+.mobile-app-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:46px;color:#6E7271;text-decoration:none;font-weight:700}
+.mobile-app-nav a span{font-size:22px;line-height:22px}.mobile-app-nav a small{font-size:10px;letter-spacing:.01em}.mobile-app-nav a.active{color:var(--sync-green)}
+.install-banner{position:fixed;z-index:90;left:12px;right:12px;bottom:calc(82px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid var(--sync-line);border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.14);font-family:inherit}
+.install-banner[hidden]{display:none}.install-banner div{display:flex;flex:1;flex-direction:column;gap:2px}.install-banner strong{font-size:13px;color:#1E201E}.install-banner small{font-size:10px;color:#6E7271}.install-banner button{border:0;border-radius:10px;padding:9px 12px;background:var(--sync-green);color:white;font-weight:700;font-size:12px}.install-banner #dismiss-install{background:transparent;color:#6E7271;font-size:20px;padding:4px}
+@media(min-width:768px){body{padding-bottom:0}.mobile-app-nav{display:none}.install-banner{left:auto;right:24px;bottom:24px;max-width:360px}}
+@media(max-width:767px){body>nav:first-of-type>div{padding-left:16px!important;padding-right:16px!important}body>nav:first-of-type a[href*="accounts.google.com"]{display:none}body>nav:first-of-type a[href*="startTrial"]{padding:9px 11px!important;font-size:11px!important}body>nav:first-of-type span{font-size:18px!important}body>nav:first-of-type .w-10{width:34px;height:34px}#dashboard{margin-top:22px!important;border-radius:16px!important}#dashboard>.bg-\[\#F5F4F0\]{padding:12px!important}#tab-home-content,#tab-calendar-content{padding:14px!important}#home-calendar-grid{overflow-x:auto}#home-calendar-days>div{min-height:70px!important;padding:5px!important}section.max-w-7xl{padding-left:16px!important;padding-right:16px!important}}
